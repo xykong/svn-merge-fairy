@@ -1,0 +1,20 @@
+# CONFIGURATION SETTINGS - customize these to match your environment
+# See the comment strings for details
+
+pidFileDir='/home/mergefairy'
+domain = "@example.com"
+mergeFairyEmail = "fairy" + domain 
+madMergeFairyEmail = "madfairy" + domain 
+happyMergeFairyEmail = "happyfairy" + domain 
+adminEmail = "philbo" + domain
+buildSucceededText = "BUILD SUCC"
+groupRecipients = "all" + domain
+svnUserName = 'fairy'
+svnPassword = ''
+options = {}
+smtpServer = 'localhost'
+smtpUserName = "" # no login required
+smtpPassword = ""
+actAsBuildFairy = False
+
+logFileName = "/var/log/merge-fairy.build"

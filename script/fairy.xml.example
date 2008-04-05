@@ -1,0 +1,19 @@
+<fairy 
+	urlbase="http://hydra/svn/"
+	pathbase="/home/mergefairy/depot/"
+	pollinterval="60"
+	buildcmd="./build">
+
+	<branches>
+		<branch url="server/branches/2008_03_04_attribution" path="server/branches/2008_03_04_attribution" buildSucceeded="true" lastBuildVersion="1328" lastSyncVersion="1328" />
+		<branch url="server/trunk" path="server/trunk" buildSucceeded="true" lastBuildVersion="1346" lastSyncVersion="1346" />
+	</branches>
+
+	<dependencies>
+		<dependency
+			baseBranch="server/branches/2008_03_04_attribution" 
+			dependentBranch="server/trunk" 
+			lastGoodMerge="1328" />
+
+	</dependencies>
+</fairy>
