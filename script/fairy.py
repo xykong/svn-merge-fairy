@@ -12,6 +12,7 @@ import cgi
 import BeautifulSoup
 import urlparse
 import os.path
+import subprocess
 # import pdb
 import shutil
 import time
@@ -269,6 +270,11 @@ class MergeFairy:
             printAndLog("%s" % (branch))
 
     def sendMail(self, fromaddr, toaddrs, subject, msg):
+        # when smtServer is empty dont' send email
+        if smtpServer == "":
+            printAndLog("smtp server is empty")
+            return
+        
         server = smtplib.SMTP(smtpServer)
         if smtpUserName and smtpPassword:
             if smtpUserName != "":
@@ -452,7 +458,14 @@ class SvnBranch:
     def popen(cmd):
         if options.verbose:
             print "Running cmd: " + cmd
-        (fin, fout) = os.popen4(cmd)
+        # change to clean deprecated alert
+        p = subprocess.Popen(cmd,
+                             shell=True,
+                             stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT,
+                             close_fds=True)
+        (fin,fout) = (p.stdin, p.stdout)
         return fout
 
     def update(self, revision):
